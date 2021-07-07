@@ -9,16 +9,10 @@ public:
     int maxSubArray(vector<int> &nums)
     {
         int result[nums.size()];
-        for (int i = 0; i < nums.size(); i++)
+        result[0] = nums[0];
+        for (int i = 1; i < nums.size(); i++)
         {
-            if (i == 0)
-            {
-                result[i] = nums[i];
-            }
-            else
-            {
-                result[i] = max(nums[i], nums[i] + result[i - 1]);
-            }
+            result[i] = max(nums[i], nums[i] + result[i - 1]);
         }
         int maxVal = -1000000;
         for (auto x : result)
