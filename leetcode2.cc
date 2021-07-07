@@ -20,25 +20,33 @@ public:
     {
         ListNode *n1 = l1;
         ListNode *n2 = l2;
-        ListNode *head = new ListNode();
-        ListNode *current = head;
+        ListNode *head = new ListNode(-1);
+        ListNode *tail = head;
         int carray = 0;
         while (n2 != NULL || n1 != NULL)
         {
-
-            int v2 = n2->val;
-            int v1 = n1->val;
+            int v2 = 0, v1 = 0;
+            if (n2 != NULL)
+            {
+                v2 = n2->val;
+                n2 = n2->next;
+            }
+            if (n1 != NULL)
+            {
+                v1 = n1->val;
+                n1 = n1->next;
+            }
             int sum = v1 + v2 + carray;
             int remain = sum % 10;
             carray = sum / 10;
-            current->next = new ListNode(remain);
+            tail->next = new ListNode(remain);
+            tail = tail->next;
         }
         if (carray > 0)
         {
-            current->next = new ListNode(carray);
+            tail->next = new ListNode(carray);
         }
         ListNode *new_head = head->next;
-        free(head);
         return new_head;
     }
 };
@@ -46,16 +54,19 @@ public:
 int main()
 {
     Solution *s = new Solution();
-    ListNode *l1 = new ListNode(1);
-    ListNode *l2 = new ListNode(7, l1);
-    ListNode *l3 = new ListNode(6, l2);
-    ListNode *l4 = new ListNode(5, l3);
+    ListNode *l1 = new ListNode(9);
+    ListNode *l2 = new ListNode(9, l1);
+    ListNode *l3 = new ListNode(9, l2);
+    ListNode *l4 = new ListNode(9, l3);
     ListNode *l5 = new ListNode(9, l4);
 
-    ListNode *s1 = new ListNode(1);
-    ListNode *s2 = new ListNode(7, s1);
-    ListNode *s3 = new ListNode(6, s2);
-    ListNode *s4 = new ListNode(5, s3);
-    ListNode *s5 = new ListNode(9, s4);
-    s->addTwoNumbers(l1, s1);
+    ListNode *s1 = new ListNode(9);
+    ListNode *s2 = new ListNode(9, s1);
+    ListNode *s3 = new ListNode(9, s2);
+    ListNode *s4 = new ListNode(9, s3);
+    ListNode *result = s->addTwoNumbers(l1, s1);
+    while (result != NULL && result->next != NULL)
+    {
+        cout << result->val;
+    }
 }
