@@ -39,14 +39,14 @@ public:
             c1 = c1->next;
         }
         ListNode *tail = header;
-        while (c1 != NULL || c2 != NULL)
+        while (c1 != nullptr || c2 != nullptr)
         {
-            if (c1 == NULL)
+            if (c1 == nullptr)
             {
                 tail->next = c2;
                 return header;
             }
-            if (c2 == NULL)
+            if (c2 == nullptr)
             {
                 tail->next = c1;
                 return header;
