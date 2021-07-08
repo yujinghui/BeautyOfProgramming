@@ -7,13 +7,9 @@ class Solution
 public:
     vector<int> topKFrequent(vector<int> &nums, int k)
     {
-        vector<int> v;
-
-        for (auto a : v)
-        {
-            cout << a << k << endl;
+        for(int i = nums.size()/2 - 1;i > 0; i--) {
+            
         }
-        return v;
     }
 };
 
@@ -21,8 +17,11 @@ int main()
 {
     Solution *s = new Solution();
     vector<int> v;
+    v.push_back(1);
+    v.push_back(1);
+    v.push_back(1);
+    v.push_back(2);
+    v.push_back(2);
     v.push_back(3);
-    v.push_back(4);
-    v.push_back(5);
-    s->topKFrequent(v, 3);
+    s->topKFrequent(v, 2);
 }
