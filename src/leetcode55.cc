@@ -8,23 +8,19 @@ public:
     bool canJump(vector<int> &nums)
     {
         int n = nums.size();
-
-        bool dp[n];
-        dp[0] = true;
-
-        for (int i = 1; i < n; i++)
+        int rightmost = 0;
+        for (int i = 0; i < n; ++i)
         {
-            for (int j = 0; j < i; j++)
+            if (i <= rightmost)
             {
-                if (dp[j] && j + nums[j] >= i)
+                rightmost = max(rightmost, i + nums[i]);
+                if (rightmost >= n - 1)
                 {
-                    dp[i] = true;
-                    break;
+                    return true;
                 }
             }
         }
-
-        return dp[n - 1];
+        return false;
     }
 };
 int main()
