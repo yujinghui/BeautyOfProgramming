@@ -8,4 +8,6 @@ add_executable(CMakeLists.txt main.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+set(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
 include(CPack)
+include_directories(~/Workspaces/googletest/include)
