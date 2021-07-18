@@ -11,16 +11,18 @@ class Solution
 public:
     int lengthOfLongestSubstring(string &s)
     {
-        int maxSubSize = 0, beginIdx = 0;
+        int maxSubSize = 0;
+        int ridx = 0;
         unordered_set<char> charset;
         for (int i = 0; i < s.size(); i++)
         {
-            if (charset.count(s[i]) > 0)
+            while (charset.count(s[ridx]) == 0 && ridx < s.size())
             {
-                beginIdx++;
-                charset.erase();
+                charset.insert(s[ridx]);
+                ridx++;
             }
-            maxSubSize = max(i - beginIdx + 1, maxSubSize);
+            maxSubSize = max(maxSubSize, ridx - i);
+            charset.erase(s[i]);
         }
         return maxSubSize;
     }
@@ -29,6 +31,6 @@ public:
 int main()
 {
     Solution s;
-    string demo = "abcabcbb";
+    string demo = "bbbbb";
     cout << s.lengthOfLongestSubstring(demo);
 }
