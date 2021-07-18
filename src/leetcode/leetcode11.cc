@@ -11,16 +11,11 @@ public:
         int maxScale = 0, i = 0, j = height.size() - 1;
         while (i < j)
         {
-            int c = (j - i) * (min(height[i], height[j]));
-            maxScale = max(c, maxScale);
+            maxScale = max((j - i) * (min(height[i], height[j])), maxScale);
             if (height[i] < height[j])
-            {
                 i++;
-            }
             else
-            {
                 j--;
-            }
         }
         return maxScale;
     }
