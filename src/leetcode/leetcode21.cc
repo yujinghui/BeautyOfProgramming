@@ -2,15 +2,8 @@
 #include <vector>
 #include <iostream>
 using namespace std;
+#include "../common/listnode.h"
 
-struct ListNode
-{
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
 class Solution
 {
 public:
@@ -19,13 +12,16 @@ public:
         ListNode *header = NULL;
         ListNode *c1 = l1;
         ListNode *c2 = l2;
-        if(c1 == NULL && c2 == NULL) {
+        if (c1 == NULL && c2 == NULL)
+        {
             return header;
         }
-        if(c1 == NULL) {
+        if (c1 == NULL)
+        {
             return c2;
         }
-        if(c2 == NULL) {
+        if (c2 == NULL)
+        {
             return c1;
         }
         if (c1->val > c2->val)

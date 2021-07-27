@@ -5,7 +5,7 @@
 using namespace std;
 
 /**
- * 电话号码对应英文单词.
+ * 电话号码对应英文单词. leetcode17
  */
 
 vector<string> shortestDigest(vector<string> &token)

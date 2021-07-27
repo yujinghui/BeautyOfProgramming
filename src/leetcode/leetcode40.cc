@@ -27,13 +27,16 @@ public:
             result.emplace_back(item);
             return;
         }
-        dfs(target, candidates, s + 1, result, item);
-        int t = target - candidates[s];
-        if (t >= 0)
+        else if (target > 0)
         {
+            int t = target - candidates[s];
             item.push_back(candidates[s]);
-            dfs(t, candidates, s, result, item);
+            dfs(t, candidates, s + 1, result, item);
             item.pop_back();
+        }
+        else
+        {
+            dfs(target, candidates, s + 1, result, item);
         }
     }
 };
@@ -41,7 +44,7 @@ public:
 int main()
 {
     Solution s;
-    vector<int> nums({10,1,2,7,6,1,5});
+    vector<int> nums({10, 1, 2, 7, 6, 1, 5});
     vector<vector<int>> result = s.combinationSum(nums, 8);
     cout << "-->" << result.size() << endl;
     for (auto x : result)
