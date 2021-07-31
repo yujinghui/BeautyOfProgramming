@@ -2,7 +2,7 @@
 #include <vector>
 #include <iostream>
 using namespace std;
-#include "../common/listnode.h"
+#include "listnode.h"
 
 class Solution
 {

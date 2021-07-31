@@ -1,7 +1,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "../common/listnode.h"
+#include "listnode.h"
 using namespace std;
 
 class Solution

@@ -7,7 +7,7 @@
  */
 #include <stdio.h>
 #include <string>
-#include "../common/listnode.h"
+#include "listnode.h"
 using namespace std;
 
 class Solution
