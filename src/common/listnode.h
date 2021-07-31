@@ -1,3 +1,5 @@
+#ifndef CIRCLE_H
+#define CIRCLE_H
 #include <string>
 struct ListNode
 {
@@ -7,3 +9,4 @@ struct ListNode
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
+#endif

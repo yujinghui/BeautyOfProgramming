@@ -2,13 +2,14 @@
 #include <vector>
 #include <set>
 #include <iostream>
-#include "../common/listnode.h"
+#include "3.4.ext.h"
 using namespace std;
 class Solution
 {
 public:
     ListNode *reverseList(ListNode *head)
     {
+        return reverse(head);
     }
 };
 int main()
@@ -20,4 +21,10 @@ int main()
     ListNode *l5 = new ListNode(9, l4);
     ListNode *p = l5;
     Solution s;
+    ListNode *c = s.reverseList(p);
+    while (c != nullptr)
+    {
+        cout << c->val << endl;
+        c = c->next;
+    }
 }

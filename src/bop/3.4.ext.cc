@@ -1,22 +1,9 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
-#include "../common/listnode.h"
+#include "3.4.ext.h"
 using namespace std;
-ListNode *reverse(ListNode *head)
-{
-    ListNode *p = head;
-    ListNode *tmp = p->next;
-    p->next = nullptr;
-    while (tmp != nullptr)
-    {
-        ListNode *tmp1 = tmp->next;
-        tmp->next = p;
-        p = tmp;
-        tmp = tmp1;
-    }
-    return p;
-}
+
 int main()
 {
     ListNode *l1 = new ListNode(21);
