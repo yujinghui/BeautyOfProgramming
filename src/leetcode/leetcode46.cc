@@ -10,36 +10,36 @@ using namespace std;
 class Solution
 {
     vector<vector<int>> ans;
+    vector<bool> checked;
 
 public:
     vector<vector<int>> permute(vector<int> &nums)
     {
-
-        for (int i = 0; i < nums.size(); i++)
-        {
-            unordered_set<int> item;
-            backtrace(item, i, nums);
-        }
+        checked.resize(nums.size(), false);
+        vector<int> item;
+        int nsize = nums.size();
+        backtrace(item, nums, nsize);
         return ans;
     }
 
-    void backtrace(unordered_set<int> &item, int idx, vector<int> &nums)
+    void backtrace(vector<int> item, vector<int> &nums, int nsize)
     {
 
-        if (!item.count(nums[idx]))
+        if (item.size() == nsize)
         {
-            item.insert(nums[idx]);
-            for (int i = 0; i < nums.size(); i++)
-            {
-                if (i != idx)
-                    backtrace(item, i, nums);
-            }
-            item.erase(nums[idx]);
+            ans.push_back(item);
+            return;
         }
-        else if (item.size() == nums.size())
+        for (int i = 0; i < nsize; i++)
         {
-            vector<int> newItem = vector<int>(item.begin(), item.end());
-            this->ans.push_back(newItem);
+            if (!checked[i])
+            {
+                checked[i] = true;
+                item.push_back(nums[i]);
+                backtrace(item, nums, nsize);
+                item.pop_back();
+                checked[i] = false;
+            }
         }
     }
 };
@@ -47,8 +47,8 @@ public:
 int main()
 {
     Solution s;
-    vector<int> nums({12, 13, 14});
-    cout << "-->" << endl;
+    vector<int> nums({1, 2, 3});
+    cout << "---->" << endl;
     vector<vector<int>> result = s.permute(nums);
     for (auto x : result)
     {
