@@ -11,11 +11,12 @@ public:
         int dp[n + 1];
         for (int i = 0; i <= n; i++)
         {
-            dp[i] = i;
-            for (int j = 1; j * j < i; j++)
+            int minval = INT_MAX;
+            for (int j = 1; j * j <= i; j++)
             {
-                dp[i] = min(dp[i], dp[i - j * j]);
+                minval = min(minval, dp[i - j * j]);
             }
+            dp[i] = minval + 1;
         }
         return dp[n];
     }
